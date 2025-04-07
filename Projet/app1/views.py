@@ -9,7 +9,7 @@ def home(request):
 
 
 
-def index(request):
+def restaurant_list(request):
     restaurants = Restaurant.objects.all()
     return render(request,'restaurants/index.html')
 
