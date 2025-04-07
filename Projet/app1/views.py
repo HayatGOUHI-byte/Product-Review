@@ -41,3 +41,43 @@ class RestaurantUpdateView(UpdateView):
 
 def restaurant_delete(request):
     pass
+
+
+#les vues et les classes en relation avec dishes
+
+class DishListView(ListView):
+    model = Dish
+    template_name = 'restaurant/dish_list.html'
+    context_object_name = 'dishes'
+
+
+class DishCreateView(CreateView):
+    model = Dish
+    form_class = DishForm
+    template_name='restaurant/dish_form.html'
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('dish_list')
+
+
+class DishUpdateView(UpdateView):
+    model =Dish 
+    form_class = DishForm
+    template_name='restaurant/dish_form.html'
+
+    def get_success_url(self):
+        return reverse_lazy('dish_list')
+
+
+
+class DishDeleteView(DeleteView):
+    model = Dish
+    template_name = 'restaurant/dish_confirm_delete.html'
+    context_object_name = 'dish'
+
+
+    def get_success_url(self):
+        return reverse_lazy('dish_list')

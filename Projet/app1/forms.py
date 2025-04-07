@@ -8,4 +8,11 @@ class RestaurantForm(forms.ModelForm):
 		fields = ['name', 'address','type']
 
 
+
+class DishForm(forms.ModelForm):
+	class Meta:
+		model = Dish
+		fields = ['restaurant', 'name', 'description', 'price', 'is_availible']
+
+
 		
