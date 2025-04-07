@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Restaurant
-from .forms import RestaurantForm
-from django.views.generic.edit import UpdateView
+from .models import Restaurant,Dish
+from .forms import RestaurantForm, DishForm
+from django.views.generic.edit import UpdateView, CreateView, DeleteView
+from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 
 
@@ -47,14 +48,14 @@ def restaurant_delete(request):
 
 class DishListView(ListView):
     model = Dish
-    template_name = 'restaurant/dish_list.html'
+    template_name = 'restaurants/dish_list.html'
     context_object_name = 'dishes'
 
 
 class DishCreateView(CreateView):
     model = Dish
     form_class = DishForm
-    template_name='restaurant/dish_form.html'
+    template_name='restaurants/dish_form.html'
 
     def form_valid(self, form):
         return super().form_valid(form)
@@ -66,7 +67,7 @@ class DishCreateView(CreateView):
 class DishUpdateView(UpdateView):
     model =Dish 
     form_class = DishForm
-    template_name='restaurant/dish_form.html'
+    template_name='restaurants/dish_form.html'
 
     def get_success_url(self):
         return reverse_lazy('dish_list')
@@ -75,7 +76,7 @@ class DishUpdateView(UpdateView):
 
 class DishDeleteView(DeleteView):
     model = Dish
-    template_name = 'restaurant/dish_confirm_delete.html'
+    template_name = 'restaurants/dish_confirm_delete.html'
     context_object_name = 'dish'
 
 

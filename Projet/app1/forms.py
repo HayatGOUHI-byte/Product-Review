@@ -1,5 +1,5 @@
 from django import forms
-from .models import Restaurant
+from .models import Restaurant, Dish
 
 
 class RestaurantForm(forms.ModelForm):
@@ -12,7 +12,7 @@ class RestaurantForm(forms.ModelForm):
 class DishForm(forms.ModelForm):
 	class Meta:
 		model = Dish
-		fields = ['restaurant', 'name', 'description', 'price', 'is_availible']
+		fields = ['restaurant', 'name', 'description', 'price', 'is_available']
 
 
 		

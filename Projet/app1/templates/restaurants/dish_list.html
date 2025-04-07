@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Liste des plats</h2>
+  <ul>
+    {% for dish in dishes %}
+      <li>
+        {{ dish.name }} - {{ dish.price }} 
+        <a href="{% url 'dish_edit' dish.pk %}">Éditer</a> | 
+        <a href="{% url 'dish_delete' dish.pk %}">Supprimer</a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'dish_create' %}">Ajouter un nouveau plat</a>
+{% endblock %}
