@@ -1,7 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>Ici on va afficher tous les noms du restaurant existant et leurs address.</p>
 <ul>
-{% for restaurant in restaurants %}
-
-	<li>{{restaurant.name}} -> {{restaurant.address}}</li>
-
-{% endfor %}
+    {% for restaurant in restaurants %}
+        <li>{{ restaurant.name }} -> {{ restaurant.address }}</li>
+    {% endfor %}
 </ul>
+
+{% endblock  %}

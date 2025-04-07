@@ -9,7 +9,10 @@ path('accueil/',views.home, name='home'),
 
 #toutes les routes en relation avec le restaurant
 
-path('index', views.index, name='index'),
+path('', views.restaurant_list, name='restaurant_list'),
+path('add/', views.restaurant_create, name='restaurant_create'),
+path('<int:pk>/edit/', views.restaurant_update, name='restaurant_update'),
+path('<int:pk>/delete/', views.restaurant_delete, name='restaurant_delete'),
 
 ]
 
