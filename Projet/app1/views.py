@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Restaurant,Dish
-from .forms import RestaurantForm, DishForm
+from .forms import *
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
@@ -9,8 +9,6 @@ from django.urls import reverse_lazy
 
 def home(request):
     return render(request,'index.html')
-
-
 
 
 def restaurant_list(request):
@@ -88,3 +86,22 @@ class DishDeleteView(DeleteView):
 def plats_par_restaurant(request):
     dishes = Dish.objects.select_related('restaurant').all()
     return render(request,'restaurants/plat.html', {'dishes':dishes})
+
+
+
+def submit_review(request, restaurant_id):
+    restaurant = Restaurant.objects.get(id=restaurant_id)
+
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.restaurant = restaurant
+            review.save()
+            return HttpResponse("Votre avis a été ajouté avec succès!")
+    else:
+        form = ReviewForm()
+    return render(request, 'restaurants/submit_review.html', {'form':form, 'restaurant': restaurant})
