@@ -82,3 +82,9 @@ class DishDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('dish_list')
+
+
+
+def plats_par_restaurant(request):
+    dishes = Dish.objects.select_related('restaurant').all()
+    return render(request,'restaurants/plat.html', {'dishes':dishes})
