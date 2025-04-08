@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>tous les avis d'un restaurant spécifique </p>
+
+
+
+{% for review in reviews %}
+{{review.comment}}
+{% endfor %}
+{% endblock %}

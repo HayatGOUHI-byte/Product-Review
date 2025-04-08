@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Restaurant,Dish
+from .models import *
 from .forms import *
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.views.generic.list import ListView
@@ -105,3 +105,22 @@ def submit_review(request, restaurant_id):
     else:
         form = ReviewForm()
     return render(request, 'restaurants/submit_review.html', {'form':form, 'restaurant': restaurant})
+
+
+
+
+#2. Avis pour un restaurant spécifique
+
+def avis_restaurant_Specific(request, id):
+    restaurant = Restaurant.objects.get(id = id)
+    reviews = Review.objects.filter(restaurant = restaurant)
+
+    return render(request, 'restaurants/avis_restaurant_Specific.html', {'reviews':reviews})
+
+
+#tous les avis d'un utilisateur spécifiQue
+
+def avis_user(request, nom):
+    user = User.objects.get(username=nom)
+    Review_By_User = Review.objects.filter(user=user)
+    return render(request, 'restaurants/Review_By_User.html', {'Review_By_User': Review_By_User})

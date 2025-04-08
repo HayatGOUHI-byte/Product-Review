@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{%  block content %}
+<p>There is views per user </p>
+
+
+{% for Review_By_User in Review_By_Users %}
+le visiteur {{Review_By_User.user.username}} a écrit ceci : {{Review_By_User.comment}}
+{% endfor %}
+
+{% endblock%}

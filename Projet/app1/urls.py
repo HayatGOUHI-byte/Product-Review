@@ -23,7 +23,11 @@ path('dishes/<int:pk>/delete/', views.DishDeleteView.as_view(), name='dish_delet
 
 #plat par restaurant
 path('dishes/plat_par_restaurant/', views.plats_par_restaurant, name='plat_par_restaurant'),
- path('submit_review/<int:restaurant_id>/', views.submit_review, name='submit_review'),
+path('submit_review/<int:restaurant_id>/', views.submit_review, name='submit_review'),
+path('avis_restaurant_Specific/<int:id>/', views.avis_restaurant_Specific, name='avis_restaurant_Specific'),
+path('avis_user/<str:nom>/', views.avis_user, name='avis_user'),
+
+
 
 ]
 

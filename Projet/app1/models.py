@@ -33,3 +33,5 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Avis de {self.user.username} pour {self.restaurant.name}"
+
+
