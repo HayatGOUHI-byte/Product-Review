@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{%  block content %}
+
+Les livres disponibles à emprunter sont les suivants :
+<ul> 
+{% for livre in livres %}
+{% if livre.disponible == True %}
+ <li>{{livre.titre}} -> {{livre.author}} -> {{livre.prix}}</li>
+ <a href="{% url 'add_emprunt' livre.id %}">Emprunter</a>
+ {% endif %}
+ {% endfor %}
+</ul>
+
+
+  {% if user.is_authenticated %}
+    <p>Bonjour, {{ user.username }} -> {{user.id}} !</p>
+{% else %}
+    <p>Bienvenue, vous n'êtes pas connecté.</p>
+{% endif %}
+{% endblock %}
