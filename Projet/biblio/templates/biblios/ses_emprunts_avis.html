@@ -1,0 +1,17 @@
+<p>Ici les emprunts d'un utilisateur {{user.username}} spécifique accompagné d'avis pour chaque emprunt</p>
+
+<ul>
+
+{% for emprunt in Emprunts %}
+<li>{{emprunt.livre.titre}} -> {{emprunt.avis}}</li>
+{% endfor%}
+
+</ul>
+<p>Voilà tous les avis faits par l'utilisateur durant son séjour sur notre application Emprunt.</p>
+
+
+<ul>
+{% for emprunt in Emprunts %}
+<li>{{emprunt.avis}}</li>
+{% endfor %}
+</ul>
