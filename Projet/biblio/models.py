@@ -18,6 +18,7 @@ class Livre(models.Model):
 class Emprunt(models.Model):
 	livre = models.ForeignKey(Livre, on_delete=models.CASCADE, related_name='emprunts')
 	user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='emprunts')
+	avis = models.CharField(max_length=100)
 	Emprunt_at = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
