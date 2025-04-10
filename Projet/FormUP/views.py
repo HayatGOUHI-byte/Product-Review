@@ -18,3 +18,13 @@ def all_formations(request):
 def tous_cours(request):
 	cours = Cours.objects.all()
 	return render(request,'tous_cours.html', {'cours': cours})
+
+def ajouter_formation(request):
+	if request.method == 'POST':
+		form = FormationForm(request.POST)
+		if form.is_valid():
+			formation = form.save()
+			return redirect('all_formations')
+	else:
+		form = FormationForm()
+	return render(request, 'ajouter_formation.html', {'form':form})
