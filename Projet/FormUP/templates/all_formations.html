@@ -1,0 +1,33 @@
+<ul>
+{% for all_formation in all_formations %}
+<li>{{all_formation.id}} -> {{all_formation.titre}}
+<br>
+
+
+{% if all_formation.cours.all|length > 2 %}
+--> les cours de cette formation sont les suivants : <br>
+  {% for cours in all_formation.cours.all %}
+    <p>{{ cours.titre }}</p>
+  {% endfor %}
+{% else %}
+  <p>Pas suffisamment de cours dans cette formation.</p>
+{% endif %}
+
+<br>
+
+
+
+{% if all_formation.formateur.all|length > 2 %}
+--> les formateurs de cette formation sont les suivants : <br>
+  {% for formateur in all_formation.formateur.all %}
+    <p>{{ formateur.user.username}}</p>
+  {% endfor %}
+{% else %}
+  <p>Pas suffisamment de formateur dans cette formation.</p>
+{% endif %}
+
+<br>
+
+
+{% endfor %}
+</ul>

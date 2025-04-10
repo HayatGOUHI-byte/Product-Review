@@ -23,9 +23,8 @@ class Formation(models.Model):
 	titre = models.CharField(max_length = 100)
 	date_debut = models.DateTimeField()
 	date_fin = models.DateTimeField()
-	formateur = models.ForeignKey(Formateur, on_delete=models.CASCADE, related_name='formations_donnee')
-    cours = models.ForeignKey(Cours, on_delete=models.CASCADE, related_name='formations')
+	formateur = models.ManyToManyField(Formateur,  related_name='formations_donnee')
+	cours=models.ManyToManyField(Cours, related_name='formations')
 
-
-    def __str(self):
-    	return self.titre 
+	def __str__(self):
+		return self.titre
