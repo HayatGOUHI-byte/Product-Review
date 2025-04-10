@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('app1/',include('app1.urls')),
     path('biblio/', include('biblio.urls')),
-    path('FormUP',include('FormUP.urls')),
+    path('FormUP/',include('FormUP.urls')),
 ]
