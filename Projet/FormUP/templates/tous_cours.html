@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<ul>
+{% for cours in cours %}
+
+<li>{{cours.titre}} , comme description de ce cours : <br> {{cours.description}} , ce cours a une durée de : <br>
+{{cours.duree}}</li>
+{% endfor %}
+</ul>
+{% endblock %}
