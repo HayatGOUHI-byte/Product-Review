@@ -44,3 +44,11 @@ class Reservation(models.Model):
 	voiture = models.ForeignKey(Voiture, on_delete=models.CASCADE, related_name='voitures')
 	date_debut = models.DateTimeField()
 	date_fin = models.DateTimeField()
+
+
+class Paiement(models.Model):
+	reservation=models.ForeignKey(Reservation, on_delete=models.CASCADE, related_name='reservations')
+	montant = models.IntegerField()
+	mode_paiement = models.CharField(max_length = 23)
+	date_paiement = models.DateTimeField()
+	etat_paiement = models.CharField(max_length = 100)
