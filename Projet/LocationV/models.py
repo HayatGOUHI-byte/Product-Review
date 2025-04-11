@@ -16,7 +16,7 @@ class Voiture(models.Model):
 	model = models.CharField(max_length = 30)
 	annee = models.CharField(max_length = 5)
 	kilometrage = models.IntegerField()
-	statut = models.OneToOneField(Statut, on_delete=models.CASCADE, related_name='statut')
+	statut = models.ForeignKey(Statut, on_delete=models.CASCADE, related_name='statut')
 
 	def __str__(self):
 		return self.marque
