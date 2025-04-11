@@ -46,9 +46,23 @@ class Reservation(models.Model):
 	date_fin = models.DateTimeField()
 
 
+	contraints = [
+	]
+
+	def __str__(self):
+		return self.client.prenom
+
+
 class Paiement(models.Model):
-	reservation=models.ForeignKey(Reservation, on_delete=models.CASCADE, related_name='reservations')
+	reservation=models.OneToOneField(Reservation, on_delete=models.CASCADE, related_name='reservations')
 	montant = models.IntegerField()
 	mode_paiement = models.CharField(max_length = 23)
 	date_paiement = models.DateTimeField()
 	etat_paiement = models.CharField(max_length = 100)
+
+
+class Retour(models.Model):
+	voiture = models.ForeignKey(Voiture, on_delete=models.CASCADE, related_name = 'voit')
+	etat_vehicule = models.CharField(max_length = 50)
+	frais_supplementaire = models.TextField()
+	kilometrage_final = models.IntegerField()
