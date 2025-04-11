@@ -16,7 +16,7 @@ class Voiture(models.Model):
 	model = models.CharField(max_length = 30)
 	annee = models.CharField(max_length = 5)
 	kilometrage = models.IntegerField()
-	statut = models.OneToOneField(Statut, on_delete=models.CASCADE, related_name='statut')
+	statut = models.ForeignKey(Statut, on_delete=models.CASCADE, related_name='statut')
 
 	def __str__(self):
 		return self.marque
@@ -66,3 +66,12 @@ class Retour(models.Model):
 	etat_vehicule = models.CharField(max_length = 50)
 	frais_supplementaire = models.TextField()
 	kilometrage_final = models.IntegerField()
+
+
+class Reparation(models.Model):
+	voiture=models.ForeignKey(Voiture, on_delete=models.CASCADE, related_name='v')
+	description = models.TextField()
+	date_reparation = models.DateField()
+	cout = models.DecimalField(max_digits=10, decimal_places=2)
+	reparateur = models.CharField(max_length=100)
+	est_terminee = models.BooleanField(default=False)
