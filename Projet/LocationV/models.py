@@ -37,3 +37,10 @@ class Client(models.Model):
 
 	def __str__(self):
 		return self.nom
+
+
+class Reservation(models.Model):
+	client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name='clients')
+	voiture = models.ForeignKey(Voiture, on_delete=models.CASCADE, related_name='voitures')
+	date_debut = models.DateTimeField()
+	date_fin = models.DateTimeField()
