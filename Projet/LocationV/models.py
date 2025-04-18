@@ -87,3 +87,6 @@ class test(request):
 
 class test2(request):
 	pass
+
+class changes(request):
+	pass
