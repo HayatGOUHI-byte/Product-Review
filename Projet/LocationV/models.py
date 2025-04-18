@@ -81,12 +81,3 @@ class Reparation(models.Model):
 	cout = models.DecimalField(max_digits=10, decimal_places=2)
 	reparateur = models.CharField(max_length=100)
 	est_terminee = models.BooleanField(default=False)
-
-class test(request):
-	pass
-
-class test2(request):
-	pass
-
-class changes(request):
-	pass
