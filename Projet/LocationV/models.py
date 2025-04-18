@@ -84,3 +84,6 @@ class Reparation(models.Model):
 
 class test(request):
 	pass
+
+class test2(request):
+	pass
